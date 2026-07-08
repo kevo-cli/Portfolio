@@ -1,0 +1,390 @@
+---
+---
+<section id="experience" class="experience-section">
+  <div class="container">
+    <h2 class="section-title">Experiencia Técnica</h2>
+    
+    <div class="experience-container glass-card">
+      <!-- Tabs Navigation -->
+      <div class="exp-tabs">
+        <button class="tab-btn active" data-tab="identity">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          Identidad y Accesos
+        </button>
+        <button class="tab-btn" data-tab="databases">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="5" rx="9" ry="3"/>
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+            <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/>
+          </svg>
+          Bases de Datos
+        </button>
+        <button class="tab-btn" data-tab="networks">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+            <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+            <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+            <line x1="12" y1="20" x2="12.01" y2="20"/>
+          </svg>
+          Redes y Recuperación
+        </button>
+      </div>
+
+      <!-- Tab Content Panels -->
+      <div class="exp-panels">
+        
+        <!-- PANEL: Identity -->
+        <div class="panel-content active" id="identity">
+          <div class="panel-info">
+            <div class="panel-header-row">
+              <h3>Gestión de Identidades, Accesos y Dispositivos</h3>
+              <span class="tech-badge">Microsoft Entra ID & Intune</span>
+            </div>
+            
+            <p class="panel-desc">
+              Administración centralizada de identidades en la nube, optimización del gobierno de identidades e implementación de políticas de seguridad Zero Trust.
+            </p>
+            
+            <ul class="experience-list">
+              <li>
+                <strong>Microsoft Entra ID (Azure AD):</strong> Gestión del ciclo de vida de usuarios, configuración de políticas de acceso condicional avanzado, MFA, autoservicio de contraseña (SSPR) y gobernanza de accesos privilegios (PIM).
+              </li>
+              <li>
+                <strong>Microsoft Intune (MDM/MAM):</strong> Diseño e implementación de directivas de cumplimiento y configuración para dispositivos Windows y móviles. Automatización del despliegue de software corporativo y parches de seguridad.
+              </li>
+              <li>
+                <strong>DevSecOps & Seguridad:</strong> Auditoría de accesos y monitorización activa de incidentes de seguridad e inicios de sesión sospechosos para mitigar riesgos organizacionales.
+              </li>
+            </ul>
+          </div>
+          
+          <div class="panel-terminal">
+            <div class="terminal-bar">
+              <span>entra-id-audit.ps1</span>
+            </div>
+            <pre class="terminal-code"><code><span class="t-comment"># Verificar cumplimiento de MFA en Entra ID</span>
+<span class="t-keyword">Connect-MgGraph</span> -Scopes <span class="t-string">"User.Read.All"</span>
+<span class="t-keyword">Get-MgUser</span> -All | <span class="t-keyword">Select-Object</span> DisplayName, UserPrincipalName,
+  @&#123;N=<span class="t-string">"MFAEnabled"</span>; E=&#123;
+    <span class="t-keyword">Get-MgUserAuthenticationMethod</span> -UserId $_.Id
+  &#125;&#125; | <span class="t-keyword">Where-Object</span> &#123; $_.MFAEnabled -eq $null &#125;</code></pre>
+          </div>
+        </div>
+
+        <!-- PANEL: Databases -->
+        <div class="panel-content" id="databases">
+          <div class="panel-info">
+            <div class="panel-header-row">
+              <h3>Administración y Optimización de Bases de Datos</h3>
+              <span class="tech-badge">Softland Exactus & SQL Server</span>
+            </div>
+            
+            <p class="panel-desc">
+              Garantía de alta disponibilidad, integridad y rendimiento en los servidores de bases de datos que soportan el ERP corporativo.
+            </p>
+            
+            <ul class="experience-list">
+              <li>
+                <strong>Administración de Softland (Exactus):</strong> Mantenimiento y configuración del motor de base de datos para la suite ERP. Resolución de bloqueos de transacciones y optimización de esquemas.
+              </li>
+              <li>
+                <strong>SQL Server Avanzado:</strong> Redacción y optimización de consultas SQL complejas, creación de Stored Procedures, Views y Triggers eficientes. Diagnóstico de cuellos de botella con SQL Profiler.
+              </li>
+              <li>
+                <strong>Planes de Contingencia y Backup:</strong> Mantenimiento de planes de mantenimiento de SQL Server, verificaciones de consistencia de bases de datos (DBCC CHECKDB) y pruebas periódicas de restauración de copias de seguridad.
+              </li>
+            </ul>
+          </div>
+          
+          <div class="panel-terminal">
+            <div class="terminal-bar">
+              <span>query-performance.sql</span>
+            </div>
+            <pre class="terminal-code"><code><span class="t-comment">-- Buscar las 5 consultas más lentas en caché</span>
+<span class="t-keyword">SELECT TOP</span> 5 query_stats.query_hash,
+  <span class="t-keyword">SUM</span>(query_stats.total_worker_time) <span class="t-keyword">AS</span> Total_CPU_Time,
+  <span class="t-keyword">MIN</span>(query_stats.statement_text) <span class="t-keyword">AS</span> Statement_Text
+<span class="t-keyword">FROM</span> (
+  <span class="t-keyword">SELECT</span> qs.query_hash, qs.total_worker_time,
+    SUBSTRING(st.text, (qs.statement_start_offset/2)+1,
+    ((<span class="t-keyword">CASE</span> qs.statement_end_offset
+      <span class="t-keyword">WHEN</span> -1 <span class="t-keyword">THEN</span> DATALENGTH(st.text)
+      <span class="t-keyword">ELSE</span> qs.statement_end_offset
+    <span class="t-keyword">END</span> - qs.statement_start_offset)/2) + 1) <span class="t-keyword">AS</span> statement_text
+  <span class="t-keyword">FROM</span> sys.dm_exec_query_stats qs
+  <span class="t-keyword">CROSS APPLY</span> sys.dm_exec_sql_text(qs.sql_handle) st
+) <span class="t-keyword">AS</span> query_stats
+<span class="t-keyword">GROUP BY</span> query_stats.query_hash
+<span class="t-keyword">ORDER BY</span> Total_CPU_Time <span class="t-keyword">DESC</span>;</code></pre>
+          </div>
+        </div>
+
+        <!-- PANEL: Networks -->
+        <div class="panel-content" id="networks">
+          <div class="panel-info">
+            <div class="panel-header-row">
+              <h3>Infraestructura de Redes y Recuperación de Datos</h3>
+              <span class="tech-badge">Routing, RIP, HSRP & Linux</span>
+            </div>
+            
+            <p class="panel-desc">
+              Diseño de topologías de red redundantes y ejecución de protocolos avanzados de seguridad y recuperación en entornos críticos.
+            </p>
+            
+            <ul class="experience-list">
+              <li>
+                <strong>Configuración de Enrutamiento:</strong> Gestión e implementación de enrutamiento dinámico mediante el protocolo RIP y aseguramiento de la alta disponibilidad en la puerta de enlace predeterminada utilizando redundancia HSRP.
+              </li>
+              <li>
+                <strong>Recuperación de Datos en Linux:</strong> Experiencia práctica en el rescate y restauración de datos en sistemas de almacenamiento cifrados mediante herramientas open-source en distribuciones Linux seguras.
+              </li>
+              <li>
+                <strong>Monitoreo de Infraestructura:</strong> Configuración de herramientas de análisis de paquetes (Wireshark) y monitoreo SNMP para prever congestiones de red y garantizar la continuidad del negocio.
+              </li>
+            </ul>
+          </div>
+          
+          <div class="panel-terminal">
+            <div class="terminal-bar">
+              <span>linux-recovery.sh</span>
+            </div>
+            <pre class="terminal-code"><code><span class="t-comment"># Desencriptar volumen LUKS y montar para rescate</span>
+<span class="t-keyword">cryptsetup</span> luksOpen /dev/sdb2 encrypted_vol
+<span class="t-comment"># Verificar y activar volumen LVM</span>
+<span class="t-keyword">vgscan</span> && <span class="t-keyword">vgchange</span> -ay vg_system
+<span class="t-comment"># Montar sistema de archivos de forma segura (read-only)</span>
+<span class="t-keyword">mount</span> -o ro /dev/mapper/vg_system-lv_data /mnt/recovery
+<span class="t-keyword">echo</span> <span class="t-string">"Acceso establecido en /mnt/recovery"</span></code></pre>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .experience-section {
+    padding: 100px 0;
+    position: relative;
+  }
+
+  .experience-container {
+    padding: 2.5rem;
+  }
+
+  /* Tabs Layout */
+  .exp-tabs {
+    display: flex;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border: 1px solid transparent;
+    transition: var(--transition-smooth);
+  }
+
+  .tab-btn:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .tab-btn.active {
+    color: var(--accent);
+    background: rgba(0, 255, 136, 0.05);
+    border-color: rgba(0, 255, 136, 0.2);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.05);
+  }
+
+  /* Panels Layout */
+  .exp-panels {
+    position: relative;
+  }
+
+  .panel-content {
+    display: none;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    animation: fadeInPanel 0.4s ease-in-out forwards;
+  }
+
+  .panel-content.active {
+    display: grid;
+  }
+
+  @keyframes fadeInPanel {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .panel-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .panel-header-row h3 {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .tech-badge {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+    background: #1E293B;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  .panel-desc {
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .experience-list li {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    position: relative;
+    padding-left: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .experience-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .experience-list li strong {
+    color: var(--text-primary);
+  }
+
+  /* Code Terminal styling */
+  .panel-terminal {
+    background: #05070A;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+
+  .terminal-bar {
+    background: #0E131F;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .terminal-code {
+    padding: 1.25rem;
+    margin: 0;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #E2E8F0;
+    flex-grow: 1;
+  }
+
+  /* Syntax Highlighting */
+  .t-comment { color: #64748B; font-style: italic; }
+  .t-keyword { color: var(--accent); font-weight: bold; }
+  .t-string { color: #38BDF8; }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .panel-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .experience-container {
+      padding: 1.25rem;
+    }
+    
+    .exp-tabs {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .tab-btn {
+      width: 100%;
+    }
+
+    .panel-header-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+  }
+</style>
+
+<script>
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.panel-content');
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabId = btn.getAttribute('data-tab');
+
+      // Remove active states from buttons
+      tabButtons.forEach(button => button.classList.remove('active'));
+      // Remove active states from panels
+      panels.forEach(panel => panel.classList.remove('active'));
+
+      // Activate clicked button
+      btn.classList.add('active');
+      
+      // Activate target panel
+      const targetPanel = document.getElementById(tabId || '');
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+      }
+    });
+  });
+</script>

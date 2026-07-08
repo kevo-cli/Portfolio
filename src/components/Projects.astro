@@ -1,0 +1,412 @@
+---
+---
+<section id="projects" class="projects-section">
+  <div class="container">
+    <h2 class="section-title">Proyectos Destacados</h2>
+    
+    <div class="projects-grid">
+      <!-- Project 1: CI/CD Pipeline -->
+      <div class="project-card glass-card">
+        <div class="project-header">
+          <div class="project-meta">
+            <svg class="repo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+            </svg>
+            <span class="repo-name">enterprise-cicd-pipeline</span>
+          </div>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="repo-link" aria-label="Ver en GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+        </div>
+        
+        <p class="project-desc">
+          Pipeline de CI/CD empresarial modular desarrollado en GitHub Actions. Automatiza las pruebas de código, escaneo de vulnerabilidades estáticas (SAST) y despliegue continuo multietapa.
+        </p>
+
+        <!-- Dynamic interactive visualizer of pipeline steps -->
+        <div class="pipeline-visualizer">
+          <div class="step success">
+            <span class="step-icon">✓</span>
+            <span class="step-name">Lint & Test</span>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step success">
+            <span class="step-icon">✓</span>
+            <span class="step-name">Scan Secrets</span>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step success">
+            <span class="step-icon">✓</span>
+            <span class="step-name">Build Image</span>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step pending">
+            <span class="step-icon">✦</span>
+            <span class="step-name">Deploy (Stg)</span>
+          </div>
+        </div>
+
+        <div class="project-footer">
+          <div class="tech-tags">
+            <span class="tech-tag">GitHub Actions</span>
+            <span class="tech-tag">YAML</span>
+            <span class="tech-tag">Docker</span>
+            <span class="tech-tag">Trivy</span>
+          </div>
+          <div class="repo-stats">
+            <span class="stat"><span class="lang-color yaml"></span>YAML</span>
+            <span class="stat">★ 42</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: IaC Infrastructure Deployment -->
+      <div class="project-card glass-card">
+        <div class="project-header">
+          <div class="project-meta">
+            <svg class="repo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+            </svg>
+            <span class="repo-name">terraform-secure-vault-deploy</span>
+          </div>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="repo-link" aria-label="Ver en GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+        </div>
+        
+        <p class="project-desc">
+          Planos de Infraestructura como Código (IaC) para el despliegue automático de redes seguras en la nube (VPC, Subnets) acoplando HashiCorp Vault para la inyección de contraseñas y certificados en tiempo de ejecución.
+        </p>
+
+        <!-- Code preview container -->
+        <div class="project-preview">
+          <pre><code><span class="p-kw">resource</span> <span class="p-str">"vault_generic_secret"</span> <span class="p-str">"db"</span> &#123;
+  <span class="p-kw">path</span> = <span class="p-str">"secret/database"</span>
+  <span class="p-kw">data_json</span> = <span class="p-keyword">jsonencode</span>(&#123;
+    username = <span class="p-str">"admin"</span>
+    password = var.db_password
+  &#125;)
+&#125;</code></pre>
+        </div>
+
+        <div class="project-footer">
+          <div class="tech-tags">
+            <span class="tech-tag">Terraform</span>
+            <span class="tech-tag">HashiCorp Vault</span>
+            <span class="tech-tag">Cloud (AWS)</span>
+          </div>
+          <div class="repo-stats">
+            <span class="stat"><span class="lang-color hcl"></span>HCL</span>
+            <span class="stat">★ 35</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3: PowerShell Entra ID & Intune automation -->
+      <div class="project-card glass-card">
+        <div class="project-header">
+          <div class="project-meta">
+            <svg class="repo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+            </svg>
+            <span class="repo-name">intune-provisioning-toolkit</span>
+          </div>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="repo-link" aria-label="Ver en GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+        </div>
+        
+        <p class="project-desc">
+          Script de automatización en PowerShell que interactúa con Microsoft Graph API. Automatiza la creación de perfiles de usuario, asignación de licencias en Entra ID y el aprovisionamiento de software y directivas en Intune.
+        </p>
+
+        <!-- Code preview container -->
+        <div class="project-preview">
+          <pre><code><span class="p-kw">Import-Module</span> Microsoft.Graph.Authentication
+<span class="t-comment"># Crear y configurar cuenta del nuevo empleado</span>
+$UserParams = @&#123;
+  AccountEnabled = $true
+  DisplayName = $EmployeeName
+  MailNickname = $Alias
+&#125;
+<span class="p-kw">New-MgUser</span> @UserParams</code></pre>
+        </div>
+
+        <div class="project-footer">
+          <div class="tech-tags">
+            <span class="tech-tag">PowerShell</span>
+            <span class="tech-tag">Microsoft Graph</span>
+            <span class="tech-tag">Entra ID</span>
+          </div>
+          <div class="repo-stats">
+            <span class="stat"><span class="lang-color ps"></span>PowerShell</span>
+            <span class="stat">★ 29</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4: Linux Forensic recovery -->
+      <div class="project-card glass-card">
+        <div class="project-header">
+          <div class="project-meta">
+            <svg class="repo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+            </svg>
+            <span class="repo-name">luks-forensic-rescue</span>
+          </div>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="repo-link" aria-label="Ver en GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+        </div>
+        
+        <p class="project-desc">
+          Script en Bash diseñado para la automatización forense de volúmenes cifrados LUKS. Abre de forma automatizada particiones dañadas, realiza análisis primario de consistencia y genera copias incrementales seguras (rsync).
+        </p>
+
+        <!-- Code preview container -->
+        <div class="project-preview">
+          <pre><code><span class="t-comment"># Desencriptación e inspección automatizada</span>
+<span class="p-kw">echo</span> <span class="p-str">"Desencriptando /dev/$DISK..."</span>
+cryptsetup luksOpen /dev/$DISK recovery_disk
+<span class="p-kw">fsck</span> -y /dev/mapper/recovery_disk
+mount -o ro /dev/mapper/recovery_disk /mnt/dest</code></pre>
+        </div>
+
+        <div class="project-footer">
+          <div class="tech-tags">
+            <span class="tech-tag">Bash</span>
+            <span class="tech-tag">LUKS / Cryptsetup</span>
+            <span class="tech-tag">Linux</span>
+            <span class="tech-tag">SysAdmin</span>
+          </div>
+          <div class="repo-stats">
+            <span class="stat"><span class="lang-color sh"></span>Shell</span>
+            <span class="stat">★ 18</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-section {
+    padding: 100px 0;
+    position: relative;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .project-card {
+    padding: 2.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .project-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .repo-svg {
+    color: var(--accent);
+  }
+
+  .repo-name {
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+  }
+
+  .repo-link {
+    color: var(--text-muted);
+  }
+
+  .repo-link:hover {
+    color: var(--accent);
+  }
+
+  .project-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+
+  /* Code Preview inside Card */
+  .project-preview {
+    background: #05070A;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .project-preview pre {
+    margin: 0;
+  }
+
+  .p-kw { color: var(--accent); font-weight: bold; }
+  .p-str { color: #38BDF8; }
+
+  /* Pipeline Visualizer */
+  .pipeline-visualizer {
+    display: flex;
+    align-items: center;
+    background: #05070A;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    padding: 1.25rem 1rem;
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
+  }
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    min-width: 70px;
+  }
+
+  .step-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .step.success .step-icon {
+    background: rgba(0, 255, 136, 0.1);
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+  }
+
+  .step.pending .step-icon {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    animation: pulseConnector 1.5s infinite alternate;
+  }
+
+  .step-name {
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  .step-connector {
+    flex-grow: 1;
+    height: 2px;
+    background: rgba(0, 255, 136, 0.3);
+    min-width: 15px;
+    margin-top: -12px;
+  }
+
+  .step.pending ~ .step-connector,
+  .step-connector:last-of-type {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Card Footer Info */
+  .project-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.25rem;
+    margin-top: auto;
+  }
+
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tech-tag {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .repo-stats {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .stat {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .lang-color {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .lang-color.yaml { background-color: #CB171E; }
+  .lang-color.hcl { background-color: #5C4EE5; }
+  .lang-color.ps { background-color: #012456; }
+  .lang-color.sh { background-color: #89e051; }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

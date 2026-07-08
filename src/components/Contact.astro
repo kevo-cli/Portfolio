@@ -1,0 +1,423 @@
+---
+---
+<section id="contact" class="contact-section">
+  <div class="container">
+    <h2 class="section-title">Contacto</h2>
+    
+    <div class="contact-grid">
+      <!-- Contact Information Card -->
+      <div class="contact-info-card glass-card">
+        <h3 class="info-title">¿Hablamos de automatización o seguridad?</h3>
+        <p class="info-desc">
+          Si buscas optimizar tu infraestructura de TI, integrar prácticas DevSecOps robustas, automatizar la gestión de tus identidades en la nube o colaborar en modelos de trabajo híbridos, no dudes en escribirme.
+        </p>
+
+        <div class="contact-methods">
+          <div class="method-item">
+            <div class="method-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div class="method-details">
+              <span class="method-label">Email Principal</span>
+              <a href="mailto:contact@kevinfrias.com" class="method-link">contact@kevinfrias.com</a>
+            </div>
+          </div>
+
+          <div class="method-item">
+            <div class="method-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="method-details">
+              <span class="method-label">Disponibilidad</span>
+              <span class="method-value">Trabajo Híbrido / Remoto</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-links-footer">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-card glass-card">
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="input-group">
+              <input type="text" id="name" required placeholder=" " />
+              <label for="name">Nombre</label>
+            </div>
+            <div class="input-group">
+              <input type="email" id="email" required placeholder=" " />
+              <label for="email">Correo Electrónico</label>
+            </div>
+          </div>
+          <div class="input-group full-width">
+            <input type="text" id="subject" required placeholder=" " />
+            <label for="subject">Asunto</label>
+          </div>
+          <div class="input-group full-width">
+            <textarea id="message" required placeholder=" " rows="5"></textarea>
+            <label for="message">Mensaje</label>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <span class="btn-text">Enviar Mensaje</span>
+            <svg class="send-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+          </button>
+        </form>
+        
+        <!-- Interactive feedback log terminal inside the form card -->
+        <div class="terminal-log" id="terminalLog">
+          <div class="log-line text-muted">&gt; Esperando datos de entrada...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    padding: 100px 0 140px 0;
+    position: relative;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 2.5rem;
+    align-items: stretch;
+  }
+
+  .contact-info-card {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .info-title {
+    font-family: var(--font-title);
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 1.25rem;
+    color: var(--text-primary);
+  }
+
+  .info-desc {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .method-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .method-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    background: rgba(0, 255, 136, 0.05);
+    color: var(--accent);
+    border: 1px solid rgba(0, 255, 136, 0.1);
+  }
+
+  .method-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .method-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .method-link {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .method-link:hover {
+    color: var(--accent);
+  }
+
+  .method-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .social-links-footer {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    transition: var(--transition-smooth);
+  }
+
+  .social-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: rgba(0, 255, 136, 0.05);
+    box-shadow: 0 0 12px rgba(0, 255, 136, 0.15);
+    transform: translateY(-2px);
+  }
+
+  /* Contact Form Styles */
+  .contact-form-card {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .input-group {
+    position: relative;
+    width: 100%;
+  }
+
+  .input-group input,
+  .input-group textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: rgba(5, 7, 10, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    transition: var(--transition-smooth);
+    outline: none;
+  }
+
+  .input-group textarea {
+    resize: none;
+  }
+
+  .input-group label {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    transition: var(--transition-smooth);
+    pointer-events: none;
+    transform-origin: left top;
+  }
+
+  .input-group textarea ~ label {
+    top: 1.25rem;
+    transform: none;
+  }
+
+  /* Floating Label Animations */
+  .input-group input:focus,
+  .input-group input:not(:placeholder-shown),
+  .input-group textarea:focus,
+  .input-group textarea:not(:placeholder-shown) {
+    border-color: rgba(var(--accent-rgb), 0.5);
+    box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.05);
+  }
+
+  .input-group input:focus ~ label,
+  .input-group input:not(:placeholder-shown) ~ label,
+  .input-group textarea:focus ~ label,
+  .input-group textarea:not(:placeholder-shown) ~ label {
+    top: 0;
+    left: 0.85rem;
+    transform: translateY(-50%) scale(0.8);
+    background: var(--bg-secondary);
+    padding: 0 0.35rem;
+    color: var(--accent);
+  }
+
+  .submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: var(--accent);
+    color: #080B11;
+    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.25);
+    align-self: flex-start;
+  }
+
+  .submit-btn:hover {
+    background-color: var(--accent-hover);
+    box-shadow: 0 6px 20px rgba(0, 255, 136, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .send-icon {
+    transition: var(--transition-smooth);
+  }
+
+  .submit-btn:hover .send-icon {
+    transform: translate(3px, -3px);
+  }
+
+  /* Feedback log terminal */
+  .terminal-log {
+    margin-top: 2rem;
+    background: #05070A;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    min-height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .log-line {
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+  }
+
+  .log-line:last-child {
+    margin-bottom: 0;
+  }
+
+  .log-success { color: var(--accent); }
+  .log-error { color: #EF4444; }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contact-info-card,
+    .contact-form-card {
+      padding: 1.5rem;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .submit-btn {
+      width: 100%;
+      align-self: stretch;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  const terminalLog = document.getElementById('terminalLog');
+  const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
+
+  function appendLog(text: string, type: 'info' | 'success' | 'error' = 'info') {
+    if (!terminalLog) return;
+    
+    let colorClass = 'text-muted';
+    if (type === 'success') colorClass = 'log-success';
+    if (type === 'error') colorClass = 'log-error';
+
+    const line = document.createElement('div');
+    line.className = `log-line ${colorClass}`;
+    line.textContent = `> ${text}`;
+    
+    // Clear log and append
+    terminalLog.innerHTML = '';
+    terminalLog.appendChild(line);
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const nameInput = document.getElementById('name') as HTMLInputElement;
+    const emailInput = document.getElementById('email') as HTMLInputElement;
+    const subjectInput = document.getElementById('subject') as HTMLInputElement;
+    const messageInput = document.getElementById('message') as HTMLTextAreaElement;
+
+    // Disable button & simulate transmission
+    if (submitBtn) submitBtn.disabled = true;
+    appendLog('Iniciando handshake TLS y estableciendo conexión...', 'info');
+
+    setTimeout(() => {
+      appendLog(`Conexión HTTPS establecida. Enviando payload de ${nameInput.value}...`, 'info');
+      
+      setTimeout(() => {
+        // Mock successful delivery
+        appendLog('HTTP/1.1 200 OK. ¡Mensaje recibido con éxito! Kevin se contactará contigo.', 'success');
+        
+        // Reset form
+        form.reset();
+        if (submitBtn) submitBtn.disabled = false;
+      }, 1500);
+      
+    }, 1000);
+  });
+</script>

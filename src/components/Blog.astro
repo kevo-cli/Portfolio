@@ -1,0 +1,495 @@
+---
+const posts = [
+  {
+    id: "sql-locks",
+    title: "Resolviendo Bloqueos Concurrentes en SQL Server y ERP Softland Exactus",
+    category: "sysadmin",
+    categoryName: "IT Support & SysAdmin",
+    date: "12 Jun 2026",
+    readTime: "6 min read",
+    summary: "Guía técnica para identificar y solucionar cuellos de botella y bloqueos transaccionales en bases de datos relacionales SQL Server que soportan el ERP corporativo.",
+    content: `
+      <p>Uno de los retos más comunes en la administración de bases de datos relacionales en entornos empresariales es lidiar con el bloqueo de recursos. En infraestructuras que ejecutan sistemas de planificación de recursos (como el ERP Softland Exactus operando sobre Microsoft SQL Server), la concurrencia puede convertirse rápidamente en el enemigo del rendimiento.</p>
+      
+      <h4>El Origen del Problema</h4>
+      <p>Cuando múltiples usuarios o procesos en segundo plano intentan modificar las mismas tablas de manera simultánea (por ejemplo, durante la facturación masiva o cierres contables), SQL Server utiliza bloqueos (locks) para proteger la integridad de los datos. Sin embargo, si una consulta mal optimizada retiene un recurso por demasiado tiempo, se genera una cadena de bloqueos (blocking chain) que paraliza a los demás usuarios.</p>
+      
+      <h4>Diagnóstico y Resolución en Tiempo Real</h4>
+      <p>Para identificar qué consulta está originando el bloqueo principal, implementamos scripts de auditoría utilizando las vistas de administración dinámica (DMVs). La consulta clave para diagnosticar esto en caliente es:</p>
+      
+      <pre><code>SELECT 
+    blocking_session_id AS BlockingSessionID,
+    session_id AS BlockedSessionID,
+    wait_type AS WaitType,
+    wait_time / 1000 AS WaitTimeSeconds,
+    (SELECT text FROM sys.dm_exec_sql_text(sql_handle)) AS QueryText
+FROM sys.dm_exec_requests
+WHERE blocking_session_id <> 0;</code></pre>
+
+      <h4>Acciones de Mitigación y Buenas Prácticas</h4>
+      <ul>
+        <li><strong>Optimización de Índices:</strong> Analizar los planes de ejecución para añadir índices no agrupados que aceleren las lecturas y reduzcan la duración de los bloqueos de tablas.</li>
+        <li><strong>Aislamiento SNAPSHOT:</strong> Evaluar la activación del nivel de aislamiento de instantánea de lectura confirmada (RCSI) en SQL Server, lo que permite que las lecturas no bloqueen las escrituras.</li>
+        <li><strong>Monitoreo Proactivo:</strong> Establecer alertas automáticas mediante SQL Agent para notificar al administrador de sistemas cuando el tiempo acumulado de bloqueos supere los 30 segundos.</li>
+      </ul>
+    `
+  },
+  {
+    id: "entra-pim",
+    title: "Endureciendo el Control de Accesos: Implementación de Microsoft Entra PIM y MFA Condicional",
+    category: "devsecops",
+    categoryName: "Ciberseguridad & DevSecOps",
+    date: "28 May 2026",
+    readTime: "8 min read",
+    summary: "Configuración paso a paso de Privileged Identity Management (PIM) para asegurar accesos administrativos justo a tiempo (Just-In-Time) con control de autenticación MFA.",
+    content: `
+      <p>En la seguridad de la infraestructura de TI moderna, otorgar privilegios permanentes es un riesgo inaceptable. El principio de menor privilegio exige que los roles administrativos se concedan únicamente cuando sean requeridos y por el tiempo mínimo indispensable.</p>
+      
+      <h4>¿Qué es Microsoft Entra PIM?</h4>
+      <p>Privileged Identity Management (PIM) nos permite mitigar el riesgo de credenciales comprometidas al eliminar los accesos administrativos permanentes. En su lugar, los administradores tienen "roles elegibles". Cuando necesitan realizar una tarea, deben "activar" el rol, lo que requiere completar verificaciones adicionales de seguridad.</p>
+      
+      <h4>Implementando Políticas Zero Trust</h4>
+      <p>El flujo recomendado que configuramos para asegurar los entornos de TI consta de los siguientes pilares:</p>
+      
+      <ol>
+        <li><strong>MFA Condicional Obligatorio:</strong> Antes de solicitar la activación del rol, el usuario debe realizar una autenticación multifactor robusta.</li>
+        <li><strong>Aprobación por Pares (Peer Approval):</strong> Roles críticos (como Administrador Global o Administrador de Facturación) requieren la aprobación explícita de otro miembro senior del equipo de infraestructura.</li>
+        <li><strong>Justificación y Registro de Ticket:</strong> Cada activación requiere ingresar una justificación de negocio y, opcionalmente, un número de ticket de soporte asociado (ServiceNow/Jira).</li>
+        <li><strong>Auditorías Semanales:</strong> Envío de reportes automatizados detallando quién activó qué rol y por qué motivo, manteniendo un registro forense intachable.</li>
+      </ol>
+      
+      <p>Esta metodología reduce la superficie de ataque del tenant de Microsoft Entra ID en más del 80%, asegurando que no existan cuentas con privilegios administrativos libres fuera del horario laboral o sin supervisión activa.</p>
+    `
+  },
+  {
+    id: "chess-sysadmin",
+    title: "El Camino hacia los 1000 ELO: Qué Enseña el Ajedrez sobre la Gestión de Servidores",
+    category: "offduty",
+    categoryName: "Fuera del Teclado",
+    date: "10 May 2026",
+    readTime: "5 min read",
+    summary: "Conectando la estrategia ajedrecística, el control posicional y la anticipación con la resolución de incidencias en infraestructuras de TI y DevSecOps.",
+    content: `
+      <p>A primera vista, un servidor Linux corriendo en la nube y un tablero de ajedrez tienen poco en común. Sin embargo, mi disciplina diaria para alcanzar la meta de los 1000 ELO me ha revelado paralelismos fascinantes con mi rol de Administrador de Sistemas.</p>
+      
+      <h4>1. El Control del Centro y la Infraestructura Crítica</h4>
+      <p>En ajedrez, dominar las casillas centrales (d4, d5, e4, e5) te otorga control del flujo de la partida. En la administración de redes, las casillas centrales son tus servicios centrales: bases de datos, pasarelas de enlace (gateways con redundancia HSRP) y servidores de identidad (Entra ID). Si descuidas la seguridad o el monitoreo de estos nodos centrales, toda tu red posicional se desmorona.</p>
+      
+      <h4>2. Táctica vs. Estrategia (Apagar Fuegos vs. Automatizar)</h4>
+      <p>Un jugador novato juega de forma reactiva, respondiendo al último movimiento de su oponente sin un plan. Esto equivale al SysAdmin que pasa el día solucionando incidencias manuales ("apagando fuegos"). El ajedrez te enseña a formular planes estructurales a largo plazo (por ejemplo, estructurar pipelines de CI/CD para evitar intervenciones manuales) mientras gestionas amenazas tácticas inmediatas.</p>
+      
+      <h4>3. El Análisis Post-Mortem</h4>
+      <p>La única manera de progresar en ajedrez es analizar tus derrotas: identificar el error preciso (blunder) que te costó la partida. En DevSecOps, esto equivale al análisis de causa raíz y redacción de incidentes post-mortem. Cuando un servicio falla, el objetivo no es solo levantarlo, sino analizar los logs minuciosamente para asegurar que esa clase de fallo no vuelva a ocurrir jamás.</p>
+    `
+  }
+];
+---
+
+<section id="blog" class="blog-section">
+  <div class="container">
+    <h2 class="section-title">Blog Técnico y Reflexiones</h2>
+    
+    <div class="blog-grid">
+      {posts.map(post => (
+        <article class="blog-card glass-card" data-post-id={post.id}>
+          <div class="blog-meta">
+            <span class={`blog-category cat-${post.category}`}>{post.categoryName}</span>
+            <span class="blog-date">{post.date}</span>
+          </div>
+          <h3 class="blog-title">{post.title}</h3>
+          <p class="blog-summary">{post.summary}</p>
+          <div class="blog-footer">
+            <span class="read-time">{post.readTime}</span>
+            <button class="read-btn" data-post-id={post.id}>
+              Leer Artículo 
+              <span class="arrow">→</span>
+            </button>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <!-- Dynamic Modal Reader -->
+  <div class="blog-modal" id="blogModal" aria-hidden="true" role="dialog">
+    <div class="modal-backdrop"></div>
+    <div class="modal-wrapper">
+      <div class="modal-content glass-card">
+        <div class="modal-header">
+          <div class="modal-meta-row">
+            <span class="modal-category" id="modalCategory">Categoría</span>
+            <span class="modal-date" id="modalDate">Fecha</span>
+            <span class="modal-readtime" id="modalReadTime">Tiempo</span>
+          </div>
+          <button class="modal-close" aria-label="Cerrar artículo">✕</button>
+        </div>
+        <div class="modal-body-scroll">
+          <h3 class="modal-title" id="modalTitle">Título del Artículo</h3>
+          <div class="modal-divider"></div>
+          <div class="modal-body" id="modalBody">
+            Contenido...
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .blog-section {
+    padding: 100px 0;
+    position: relative;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  .blog-card {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .blog-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .blog-category {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+
+  .cat-sysadmin {
+    background: rgba(0, 255, 136, 0.08);
+    color: var(--accent);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+  }
+
+  .cat-devsecops {
+    background: rgba(0, 210, 255, 0.08);
+    color: #00D2FF;
+    border: 1px solid rgba(0, 210, 255, 0.2);
+  }
+
+  .cat-offduty {
+    background: rgba(157, 78, 221, 0.08);
+    color: #9D4EDD;
+    border: 1px solid rgba(157, 78, 221, 0.2);
+  }
+
+  .blog-date {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .blog-title {
+    font-family: var(--font-title);
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    flex-grow: 0;
+  }
+
+  .blog-summary {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+
+  .blog-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.25rem;
+  }
+
+  .read-time {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+
+  .read-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .read-btn .arrow {
+    transition: var(--transition-smooth);
+  }
+
+  .blog-card:hover .read-btn .arrow {
+    transform: translateX(4px);
+  }
+
+  /* Modal Reader Styles */
+  .blog-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 150;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .blog-modal.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(4, 6, 10, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .modal-wrapper {
+    position: relative;
+    width: 90%;
+    max-width: 750px;
+    max-height: 85vh;
+    z-index: 10;
+    transform: scale(0.95) translateY(20px);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .blog-modal.open .modal-wrapper {
+    transform: scale(1) translateY(0);
+  }
+
+  .modal-content {
+    background: var(--bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    max-height: 85vh;
+    overflow: hidden;
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .modal-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+  }
+
+  .modal-category {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .modal-date {
+    color: var(--text-muted);
+  }
+
+  .modal-readtime {
+    color: var(--text-muted);
+  }
+
+  .modal-close {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    color: var(--text-secondary);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+  }
+
+  .modal-close:hover {
+    color: var(--text-primary);
+    background: rgba(255,255,255,0.08);
+    transform: rotate(90deg);
+  }
+
+  .modal-body-scroll {
+    padding: 2rem 2.5rem 3rem 2.5rem;
+    overflow-y: auto;
+  }
+
+  .modal-title {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+  }
+
+  .modal-divider {
+    height: 1px;
+    background: var(--border-color);
+    margin-bottom: 2rem;
+  }
+
+  .modal-body {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .modal-body h4 {
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-top: 1rem;
+  }
+
+  .modal-body pre {
+    background: #05070A;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 1.25rem;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    line-height: 1.6;
+    margin: 1rem 0;
+  }
+
+  .modal-body ul, .modal-body ol {
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .modal-body ul { list-style: disc; }
+  .modal-body ol { list-style: decimal; }
+
+  .modal-body strong {
+    color: var(--text-primary);
+  }
+
+  @media (max-width: 768px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .modal-body-scroll {
+      padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+    }
+
+    .modal-header {
+      padding: 1rem 1.5rem;
+    }
+
+    .modal-meta-row {
+      gap: 0.75rem;
+      font-size: 0.7rem;
+    }
+  }
+</style>
+
+<script define:vars={{ posts }}>
+  // Modal handling logic
+  const modal = document.getElementById('blogModal');
+  const backdrop = modal.querySelector('.modal-backdrop');
+  const closeBtn = modal.querySelector('.modal-close');
+  const modalCategory = document.getElementById('modalCategory');
+  const modalDate = document.getElementById('modalDate');
+  const modalReadTime = document.getElementById('modalReadTime');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalBody = document.getElementById('modalBody');
+
+  function openArticle(postId) {
+    const post = posts.find(p => p.id === postId);
+    if (!post || !modal) return;
+
+    // Populate Modal Content
+    if (modalCategory) {
+      modalCategory.textContent = post.categoryName;
+      modalCategory.className = `modal-category cat-${post.category}`;
+    }
+    if (modalDate) modalDate.textContent = post.date;
+    if (modalReadTime) modalReadTime.textContent = post.readTime;
+    if (modalTitle) modalTitle.textContent = post.title;
+    if (modalBody) modalBody.innerHTML = post.content;
+
+    // Show Modal
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // Lock background scroll
+  }
+
+  function closeArticle() {
+    if (!modal) return;
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = ''; // Unlock background scroll
+  }
+
+  // Click handler for blog cards
+  document.querySelectorAll('.blog-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const postId = card.getAttribute('data-post-id');
+      if (postId) openArticle(postId);
+    });
+  });
+
+  // Click handlers for close buttons & backdrop
+  closeBtn?.addEventListener('click', closeArticle);
+  backdrop?.addEventListener('click', closeArticle);
+
+  // Close modal on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal?.classList.contains('open')) {
+      closeArticle();
+    }
+  });
+</script>

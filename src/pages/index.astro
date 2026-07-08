@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Experience from '../components/Experience.astro';
+import Certifications from '../components/Certifications.astro';
+import Projects from '../components/Projects.astro';
+import Blog from '../components/Blog.astro';
+import Contact from '../components/Contact.astro';
+---
+
+<Layout title="Kevin Frias | Administrador de Sistemas & DevSecOps">
+  <Header />
+  
+  <main>
+    <Hero />
+    <About />
+    <Experience />
+    <Certifications />
+    <Projects />
+    <Blog />
+    <Contact />
+  </main>
+  
+  <footer class="footer-bottom">
+    <div class="container footer-content">
+      <p class="copyright">&copy; {new Date().getFullYear()} Kevin Ulises Frias Rijo (Radi Franco). Todos los derechos reservados.</p>
+      <p class="made-by">Hecho con Astro & CSS Puro</p>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  main {
+    position: relative;
+    z-index: 10;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border-color);
+    padding: 2.5rem 0;
+    background: #05070A;
+    position: relative;
+    z-index: 15;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .made-by {
+    color: var(--accent);
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+  }
+</style>
