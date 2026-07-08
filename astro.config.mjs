@@ -1,12 +1,11 @@
 import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
 export default defineConfig({
-  // Al ser un repositorio de proyecto, el base debe coincidir exactamente con el nombre de tu repositorio
-  base: '/Portfolio',
+  // Como tienes dominio propio, el sitio ahora vive en la raíz
+  base: '/', 
   
-  // Cambiamos el dominio para que apunte a tu usuario actual de GitHub (kevo-cli)
-  site: 'https://kevo-cli.github.io',
+  // Tu nuevo dominio oficial
+  site: 'https://kevinrijo.work',
   
   output: 'static',
 });
