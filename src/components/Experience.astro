@@ -2,7 +2,7 @@
 ---
 <section id="experience" class="experience-section">
   <div class="container">
-    <h2 class="section-title">Experiencia Técnica</h2>
+    <h2 class="section-title">Technical Experience</h2>
     
     <div class="experience-container glass-card">
       <!-- Tabs Navigation -->
@@ -12,7 +12,7 @@
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
             <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
           </svg>
-          Identidad y Accesos
+          Identity & Access
         </button>
         <button class="tab-btn" data-tab="databases">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -20,7 +20,7 @@
             <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
             <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/>
           </svg>
-          Bases de Datos
+          Databases
         </button>
         <button class="tab-btn" data-tab="networks">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -29,7 +29,7 @@
             <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
             <line x1="12" y1="20" x2="12.01" y2="20"/>
           </svg>
-          Redes y Recuperación
+          Networks & Recovery
         </button>
       </div>
 
@@ -40,23 +40,23 @@
         <div class="panel-content active" id="identity">
           <div class="panel-info">
             <div class="panel-header-row">
-              <h3>Gestión de Identidades, Accesos y Dispositivos</h3>
+              <h3>Identity, Access & Device Management</h3>
               <span class="tech-badge">Microsoft Entra ID & Intune</span>
             </div>
             
             <p class="panel-desc">
-              Administración centralizada de identidades en la nube, optimización del gobierno de identidades e implementación de políticas de seguridad Zero Trust.
+              Centralized cloud identity administration, identity governance optimization, and implementation of Zero Trust security architectures.
             </p>
             
             <ul class="experience-list">
               <li>
-                <strong>Microsoft Entra ID (Azure AD):</strong> Gestión del ciclo de vida de usuarios, configuración de políticas de acceso condicional avanzado, MFA, autoservicio de contraseña (SSPR) y gobernanza de accesos privilegios (PIM).
+                <strong>Microsoft Entra ID (Azure AD):</strong> User lifecycle management, advanced Conditional Access policies, MFA enforcement, Self-Service Password Reset (SSPR), and Privileged Identity Management (PIM).
               </li>
               <li>
-                <strong>Microsoft Intune (MDM/MAM):</strong> Diseño e implementación de directivas de cumplimiento y configuración para dispositivos Windows y móviles. Automatización del despliegue de software corporativo y parches de seguridad.
+                <strong>Microsoft Intune (MDM/MAM):</strong> Design and implementation of compliance and configuration policies for Windows and mobile fleets. Automated software distribution and security patch management.
               </li>
               <li>
-                <strong>DevSecOps & Seguridad:</strong> Auditoría de accesos y monitorización activa de incidentes de seguridad e inicios de sesión sospechosos para mitigar riesgos organizacionales.
+                <strong>DevSecOps & Security:</strong> Access auditing and continuous monitoring of security incidents and anomalous sign-ins to mitigate organizational risk.
               </li>
             </ul>
           </div>
@@ -65,7 +65,7 @@
             <div class="terminal-bar">
               <span>entra-id-audit.ps1</span>
             </div>
-            <pre class="terminal-code"><code><span class="t-comment"># Verificar cumplimiento de MFA en Entra ID</span>
+            <pre class="terminal-code"><code><span class="t-comment"># Verify MFA compliance in Entra ID</span>
 <span class="t-keyword">Connect-MgGraph</span> -Scopes <span class="t-string">"User.Read.All"</span>
 <span class="t-keyword">Get-MgUser</span> -All | <span class="t-keyword">Select-Object</span> DisplayName, UserPrincipalName,
   @&#123;N=<span class="t-string">"MFAEnabled"</span>; E=&#123;
@@ -78,23 +78,23 @@
         <div class="panel-content" id="databases">
           <div class="panel-info">
             <div class="panel-header-row">
-              <h3>Administración y Optimización de Bases de Datos</h3>
+              <h3>Database Administration & Optimization</h3>
               <span class="tech-badge">Softland Exactus & SQL Server</span>
             </div>
             
             <p class="panel-desc">
-              Garantía de alta disponibilidad, integridad y rendimiento en los servidores de bases de datos que soportan el ERP corporativo.
+              Ensuring high availability, data integrity, and peak performance across relational database engines powering enterprise ERPs.
             </p>
             
             <ul class="experience-list">
               <li>
-                <strong>Administración de Softland (Exactus):</strong> Mantenimiento y configuración del motor de base de datos para la suite ERP. Resolución de bloqueos de transacciones y optimización de esquemas.
+                <strong>Softland (Exactus) Administration:</strong> Database engine maintenance and tuning for the ERP suite. Resolution of transactional blocking chains and schema optimization.
               </li>
               <li>
-                <strong>SQL Server Avanzado:</strong> Redacción y optimización de consultas SQL complejas, creación de Stored Procedures, Views y Triggers eficientes. Diagnóstico de cuellos de botella con SQL Profiler.
+                <strong>Advanced SQL Server:</strong> Authoring and optimizing complex SQL queries, creating performant Stored Procedures, Views, and Triggers. Bottleneck diagnostics using SQL Profiler and Extended Events.
               </li>
               <li>
-                <strong>Planes de Contingencia y Backup:</strong> Mantenimiento de planes de mantenimiento de SQL Server, verificaciones de consistencia de bases de datos (DBCC CHECKDB) y pruebas periódicas de restauración de copias de seguridad.
+                <strong>Disaster Recovery & Backup Plans:</strong> Management of SQL Server maintenance plans, integrity checks (DBCC CHECKDB), and periodic backup restoration drills.
               </li>
             </ul>
           </div>
@@ -103,7 +103,7 @@
             <div class="terminal-bar">
               <span>query-performance.sql</span>
             </div>
-            <pre class="terminal-code"><code><span class="t-comment">-- Buscar las 5 consultas más lentas en caché</span>
+            <pre class="terminal-code"><code><span class="t-comment">-- Find top 5 slowest queries in cache</span>
 <span class="t-keyword">SELECT TOP</span> 5 query_stats.query_hash,
   <span class="t-keyword">SUM</span>(query_stats.total_worker_time) <span class="t-keyword">AS</span> Total_CPU_Time,
   <span class="t-keyword">MIN</span>(query_stats.statement_text) <span class="t-keyword">AS</span> Statement_Text
@@ -126,23 +126,23 @@
         <div class="panel-content" id="networks">
           <div class="panel-info">
             <div class="panel-header-row">
-              <h3>Infraestructura de Redes y Recuperación de Datos</h3>
+              <h3>Network Infrastructure & Data Recovery</h3>
               <span class="tech-badge">Routing, RIP, HSRP & Linux</span>
             </div>
             
             <p class="panel-desc">
-              Diseño de topologías de red redundantes y ejecución de protocolos avanzados de seguridad y recuperación en entornos críticos.
+              Designing redundant network topologies and executing advanced security and forensic recovery protocols in mission-critical environments.
             </p>
             
             <ul class="experience-list">
               <li>
-                <strong>Configuración de Enrutamiento:</strong> Gestión e implementación de enrutamiento dinámico mediante el protocolo RIP y aseguramiento de la alta disponibilidad en la puerta de enlace predeterminada utilizando redundancia HSRP.
+                <strong>Routing Configuration:</strong> Dynamic routing implementation and management via RIP, ensuring default gateway high availability using HSRP redundancy.
               </li>
               <li>
-                <strong>Recuperación de Datos en Linux:</strong> Experiencia práctica en el rescate y restauración de datos en sistemas de almacenamiento cifrados mediante herramientas open-source en distribuciones Linux seguras.
+                <strong>Linux Data Recovery:</strong> Hands-on data recovery and partition reconstruction on encrypted storage systems using open-source utilities on secure Linux environments.
               </li>
               <li>
-                <strong>Monitoreo de Infraestructura:</strong> Configuración de herramientas de análisis de paquetes (Wireshark) y monitoreo SNMP para prever congestiones de red y garantizar la continuidad del negocio.
+                <strong>Infrastructure Monitoring:</strong> Deep packet inspection (Wireshark) and SNMP monitoring to anticipate network congestion and guarantee business continuity.
               </li>
             </ul>
           </div>
@@ -151,13 +151,13 @@
             <div class="terminal-bar">
               <span>linux-recovery.sh</span>
             </div>
-            <pre class="terminal-code"><code><span class="t-comment"># Desencriptar volumen LUKS y montar para rescate</span>
+            <pre class="terminal-code"><code><span class="t-comment"># Decrypt LUKS volume and mount for recovery</span>
 <span class="t-keyword">cryptsetup</span> luksOpen /dev/sdb2 encrypted_vol
-<span class="t-comment"># Verificar y activar volumen LVM</span>
+<span class="t-comment"># Verify and activate LVM volume</span>
 <span class="t-keyword">vgscan</span> && <span class="t-keyword">vgchange</span> -ay vg_system
-<span class="t-comment"># Montar sistema de archivos de forma segura (read-only)</span>
+<span class="t-comment"># Mount filesystem securely (read-only)</span>
 <span class="t-keyword">mount</span> -o ro /dev/mapper/vg_system-lv_data /mnt/recovery
-<span class="t-keyword">echo</span> <span class="t-string">"Acceso establecido en /mnt/recovery"</span></code></pre>
+<span class="t-keyword">echo</span> <span class="t-string">"Access established at /mnt/recovery"</span></code></pre>
           </div>
         </div>
 

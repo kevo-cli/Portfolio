@@ -2,7 +2,7 @@
 ---
 <section id="projects" class="projects-section">
   <div class="container">
-    <h2 class="section-title">Proyectos Destacados</h2>
+    <h2 class="section-title">Featured Projects</h2>
     
     <div class="projects-grid">
       <!-- Project 1: CI/CD Pipeline -->
@@ -14,7 +14,7 @@
             </svg>
             <span class="repo-name">enterprise-cicd-pipeline</span>
           </div>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="repo-link" aria-label="Ver en GitHub">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="repo-link" aria-label="View on GitHub">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
               <polyline points="15 3 21 3 21 9"/>
@@ -24,7 +24,7 @@
         </div>
         
         <p class="project-desc">
-          Pipeline de CI/CD empresarial modular desarrollado en GitHub Actions. Automatiza las pruebas de código, escaneo de vulnerabilidades estáticas (SAST) y despliegue continuo multietapa.
+          Modular enterprise CI/CD pipeline built with GitHub Actions. Automates linting, test execution, Static Application Security Testing (SAST), vulnerability container scanning, and multi-stage continuous deployment.
         </p>
 
         <!-- Dynamic interactive visualizer of pipeline steps -->
@@ -73,7 +73,7 @@
             </svg>
             <span class="repo-name">terraform-secure-vault-deploy</span>
           </div>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="repo-link" aria-label="Ver en GitHub">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="repo-link" aria-label="View on GitHub">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
               <polyline points="15 3 21 3 21 9"/>
@@ -83,7 +83,7 @@
         </div>
         
         <p class="project-desc">
-          Planos de Infraestructura como Código (IaC) para el despliegue automático de redes seguras en la nube (VPC, Subnets) acoplando HashiCorp Vault para la inyección de contraseñas y certificados en tiempo de ejecución.
+          Infrastructure as Code (IaC) blueprints for automated provisioning of secure cloud networking (VPC, Subnets) integrated with HashiCorp Vault for runtime dynamic secret and certificate injection.
         </p>
 
         <!-- Code preview container -->
@@ -119,7 +119,7 @@
             </svg>
             <span class="repo-name">intune-provisioning-toolkit</span>
           </div>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="repo-link" aria-label="Ver en GitHub">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="repo-link" aria-label="View on GitHub">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
               <polyline points="15 3 21 3 21 9"/>
@@ -129,13 +129,13 @@
         </div>
         
         <p class="project-desc">
-          Script de automatización en PowerShell que interactúa con Microsoft Graph API. Automatiza la creación de perfiles de usuario, asignación de licencias en Entra ID y el aprovisionamiento de software y directivas en Intune.
+          PowerShell automation toolkit leveraging the Microsoft Graph API. Automates onboarding user lifecycle workflows, license assignments in Entra ID, and Intune configuration profiles and software deployment.
         </p>
 
         <!-- Code preview container -->
         <div class="project-preview">
           <pre><code><span class="p-kw">Import-Module</span> Microsoft.Graph.Authentication
-<span class="t-comment"># Crear y configurar cuenta del nuevo empleado</span>
+<span class="t-comment"># Create and configure new employee account</span>
 $UserParams = @&#123;
   AccountEnabled = $true
   DisplayName = $EmployeeName
@@ -166,7 +166,7 @@ $UserParams = @&#123;
             </svg>
             <span class="repo-name">luks-forensic-rescue</span>
           </div>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="repo-link" aria-label="Ver en GitHub">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="repo-link" aria-label="View on GitHub">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
               <polyline points="15 3 21 3 21 9"/>
@@ -176,13 +176,13 @@ $UserParams = @&#123;
         </div>
         
         <p class="project-desc">
-          Script en Bash diseñado para la automatización forense de volúmenes cifrados LUKS. Abre de forma automatizada particiones dañadas, realiza análisis primario de consistencia y genera copias incrementales seguras (rsync).
+          Bash script designed for automated forensic recovery on LUKS-encrypted partitions. Programmatically unlocks compromised volumes, performs non-destructive filesystem integrity checks, and executes secure rsync backup mirrors.
         </p>
 
         <!-- Code preview container -->
         <div class="project-preview">
-          <pre><code><span class="t-comment"># Desencriptación e inspección automatizada</span>
-<span class="p-kw">echo</span> <span class="p-str">"Desencriptando /dev/$DISK..."</span>
+          <pre><code><span class="t-comment"># Automated decryption and inspection</span>
+<span class="p-kw">echo</span> <span class="p-str">"Decrypting /dev/$DISK..."</span>
 cryptsetup luksOpen /dev/$DISK recovery_disk
 <span class="p-kw">fsck</span> -y /dev/mapper/recovery_disk
 mount -o ro /dev/mapper/recovery_disk /mnt/dest</code></pre>
