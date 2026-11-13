@@ -29,7 +29,7 @@
             <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
             <line x1="12" y1="20" x2="12.01" y2="20"/>
           </svg>
-          Networks & Recovery
+          Virtualization &amp; Networks
         </button>
       </div>
 
@@ -40,37 +40,36 @@
         <div class="panel-content active" id="identity">
           <div class="panel-info">
             <div class="panel-header-row">
-              <h3>Identity, Access & Device Management</h3>
-              <span class="tech-badge">Microsoft Entra ID & Intune</span>
+              <h3>Zero Trust Identity, RBAC &amp; Cloud Defense</h3>
+              <span class="tech-badge">Zero Trust, Defender XDR &amp; Netskope</span>
             </div>
             
             <p class="panel-desc">
-              Centralized cloud identity administration, identity governance optimization, and implementation of Zero Trust security architectures.
+              Consulting on enterprise cloud identity architecture, designing Zero Trust security boundaries, enforcing least-privilege RBAC models, and operationalizing proactive threat defense.
             </p>
             
             <ul class="experience-list">
               <li>
-                <strong>Microsoft Entra ID (Azure AD):</strong> User lifecycle management, advanced Conditional Access policies, MFA enforcement, Self-Service Password Reset (SSPR), and Privileged Identity Management (PIM).
+                <strong>Zero Trust &amp; Entra ID Architecture:</strong> Designed and deployed comprehensive Zero Trust policies, granular Role-Based Access Control (RBAC), and Entra ID Privileged Identity Management (PIM) with strict Just-In-Time role activation and risk-based Conditional Access MFA.
               </li>
               <li>
-                <strong>Microsoft Intune (MDM/MAM):</strong> Design and implementation of compliance and configuration policies for Windows and mobile fleets. Automated software distribution and security patch management.
+                <strong>Threat Defense &amp; Cloud Security:</strong> Managed Microsoft Defender XDR and Netskope Security Service Edge (SSE) / CASB solutions, enforcing Data Loss Prevention (DLP), real-time SaaS inspection, and rapid containment of anomalous identity events.
               </li>
               <li>
-                <strong>DevSecOps & Security:</strong> Access auditing and continuous monitoring of security incidents and anomalous sign-ins to mitigate organizational risk.
+                <strong>Endpoint Governance &amp; Intune Automation:</strong> Engineered automated Microsoft Intune compliance profiles, software delivery packages, and disk encryption baselines across distributed enterprise fleets.
               </li>
             </ul>
           </div>
           
           <div class="panel-terminal">
             <div class="terminal-bar">
-              <span>entra-id-audit.ps1</span>
+              <span>zero-trust-audit.ps1</span>
             </div>
-            <pre class="terminal-code"><code><span class="t-comment"># Verify MFA compliance in Entra ID</span>
-<span class="t-keyword">Connect-MgGraph</span> -Scopes <span class="t-string">"User.Read.All"</span>
-<span class="t-keyword">Get-MgUser</span> -All | <span class="t-keyword">Select-Object</span> DisplayName, UserPrincipalName,
-  @&#123;N=<span class="t-string">"MFAEnabled"</span>; E=&#123;
-    <span class="t-keyword">Get-MgUserAuthenticationMethod</span> -UserId $_.Id
-  &#125;&#125; | <span class="t-keyword">Where-Object</span> &#123; $_.MFAEnabled -eq $null &#125;</code></pre>
+            <pre class="terminal-code"><code><span class="t-comment"># Audit Zero Trust Conditional Access & MFA enforcement</span>
+<span class="t-keyword">Connect-MgGraph</span> -Scopes <span class="t-string">"Policy.Read.All"</span>, <span class="t-string">"User.Read.All"</span>
+<span class="t-keyword">Get-MgIdentityConditionalAccessPolicy</span> | 
+  <span class="t-keyword">Where-Object</span> &#123; $_.State -eq <span class="t-string">"enabled"</span> &#125; |
+  <span class="t-keyword">Select-Object</span> DisplayName, GrantControls, Conditions</code></pre>
           </div>
         </div>
 
@@ -122,42 +121,41 @@
           </div>
         </div>
 
-        <!-- PANEL: Networks -->
+        <!-- PANEL: Networks / Virtualization -->
         <div class="panel-content" id="networks">
           <div class="panel-info">
             <div class="panel-header-row">
-              <h3>Network Infrastructure & Data Recovery</h3>
-              <span class="tech-badge">Routing, RIP, HSRP & Linux</span>
+              <h3>Virtualization, Linux Clustering &amp; Networking</h3>
+              <span class="tech-badge">Proxmox VE &amp; Ubuntu Server</span>
             </div>
             
             <p class="panel-desc">
-              Designing redundant network topologies and executing advanced security and forensic recovery protocols in mission-critical environments.
+              Orchestrating bare-metal on-premise hypervisors, clustering enterprise Linux workloads, and engineering high-availability network topologies for mission-critical operations.
             </p>
             
             <ul class="experience-list">
               <li>
-                <strong>Routing Configuration:</strong> Dynamic routing implementation and management via RIP, ensuring default gateway high availability using HSRP redundancy.
+                <strong>Proxmox VE Hypervisors:</strong> Orchestrated on-premise infrastructure on Proxmox VE hypervisors, deploying production-grade virtual machines, isolated containerized workloads (LXC), and redundant ZFS storage replication with automated disaster recovery snapshots.
               </li>
               <li>
-                <strong>Linux Data Recovery:</strong> Hands-on data recovery and partition reconstruction on encrypted storage systems using open-source utilities on secure Linux environments.
+                <strong>Ubuntu Server Clusters:</strong> Administered and hardened multi-node Ubuntu Server clusters, utilizing automation scripts and security baselines to maintain high availability and uninterrupted operational continuity.
               </li>
               <li>
-                <strong>Infrastructure Monitoring:</strong> Deep packet inspection (Wireshark) and SNMP monitoring to anticipate network congestion and guarantee business continuity.
+                <strong>Resilient Networking &amp; Forensics:</strong> Engineered fault-tolerant dynamic routing via RIP with gateway redundancy (HSRP), coupled with deep packet analysis (Wireshark) and automated LUKS encrypted storage recovery.
               </li>
             </ul>
           </div>
           
           <div class="panel-terminal">
             <div class="terminal-bar">
-              <span>linux-recovery.sh</span>
+              <span>proxmox-cluster-audit.sh</span>
             </div>
-            <pre class="terminal-code"><code><span class="t-comment"># Decrypt LUKS volume and mount for recovery</span>
-<span class="t-keyword">cryptsetup</span> luksOpen /dev/sdb2 encrypted_vol
-<span class="t-comment"># Verify and activate LVM volume</span>
-<span class="t-keyword">vgscan</span> && <span class="t-keyword">vgchange</span> -ay vg_system
-<span class="t-comment"># Mount filesystem securely (read-only)</span>
-<span class="t-keyword">mount</span> -o ro /dev/mapper/vg_system-lv_data /mnt/recovery
-<span class="t-keyword">echo</span> <span class="t-string">"Access established at /mnt/recovery"</span></code></pre>
+            <pre class="terminal-code"><code><span class="t-comment"># Audit Proxmox VE cluster health and node quorum</span>
+<span class="t-keyword">pvecm</span> status
+<span class="t-comment"># Check high-availability resource status on Ubuntu nodes</span>
+<span class="t-keyword">ha-manager</span> status
+<span class="t-comment"># Verify ZFS pool redundancy and disk integrity</span>
+<span class="t-keyword">zpool</span> status tank-production</code></pre>
           </div>
         </div>
 
